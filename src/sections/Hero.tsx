@@ -58,7 +58,7 @@ export default function Hero() {
         parallax={-8}
       />
 
-      <div className="section-content w-full px-6 md:px-12 flex flex-col items-center text-center">
+      <div className="section-content w-full px-6 md:px-12 flex flex-col items-start text-left">
         <div
           ref={cardRef}
           className="glass-card glass-thick w-full max-w-[720px] px-8 py-12 md:px-14 md:py-16 flex flex-col items-center gap-6"
@@ -69,7 +69,7 @@ export default function Hero() {
             className="text-[clamp(3.5rem,12vw,7rem)] font-extralight tracking-[-0.04em] leading-none"
             style={{ color: 'var(--text-primary)' }}
           >
-            KAKOYTA
+            KAKOYTO
           </h1>
 
           <p
@@ -77,8 +77,8 @@ export default function Hero() {
             className="text-base md:text-xl font-normal max-w-[560px]"
             style={{ color: 'var(--text-secondary)', lineHeight: 1.55 }}
           >
-            Больше звонков по объекту начинается с качественной визуальной
-            подачи. Фото, видео и 3D-туры для коммерческой недвижимости,
+            <strong>Больше звонков по объекту начинается с качественной визуальной
+            подачи.</strong> Фото, видео и 3D-туры для коммерческой недвижимости,
             которые помогают агентам, собственникам и бизнесу привлекать
             больше заинтересованных клиентов.
           </p>
