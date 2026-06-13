@@ -80,7 +80,7 @@ export default function About() {
           >
             <img
               src={AVATAR}
-              alt="Фотограф KAKOYTA"
+              alt="Фотограф KAKOYTO"
               className="w-full h-full object-cover"
             />
           </div>
@@ -98,7 +98,7 @@ export default function About() {
               className="text-sm md:text-base"
               style={{ color: 'var(--text-secondary)', lineHeight: 1.65 }}
             >
-              Более 5 лет работаю с визуальным контентом для бизнеса. В их
+              Привет, меня зовут Тимур. Более 5 лет я работаю с визуальным контентом для бизнеса. В их
               числе студии дизайна, бренды одежды и инвестиционные компании.
             </p>
             <p
