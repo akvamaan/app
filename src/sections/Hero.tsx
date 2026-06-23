@@ -61,32 +61,35 @@ export default function Hero() {
       <div className="section-content w-full px-6 md:px-12 flex flex-col items-start text-left">
         <div
           ref={cardRef}
-          className="glass-card glass-thick w-full max-w-[720px] px-8 py-12 md:px-14 md:py-16 flex flex-col items-center gap-6"
+          className="glass-card glass-thick w-full max-w-[720px] px-6 py-8 md:px-8 md:py-10 flex flex-col items-center justify-center gap-4"
           style={{ borderRadius: 28 }}
         >
           <h1
-            ref={titleRef}
-            className="text-[clamp(3.5rem,12vw,7rem)] font-extralight tracking-[-0.04em] leading-none"
-            style={{ color: 'var(--text-primary)' }}
-          >
-            KAKOYTO
-          </h1>
+  ref={titleRef}
+  className="text-3xl md:text-4xl font-medium tracking-[-0.02em] mb-6 max-w-[640px] text-center"
+  style={{ color: 'var(--text-primary)', lineHeight: 1.2, textWrap: 'balance' }}
+>
+  «Качественная визуальная подача — первый шаг к большему количеству обращений по объекту» — 
+  <span style={{ color: '#bc9549' }}>
+    {" "}какой-то фотограф
+  </span>
+</h1>
 
           <p
             ref={subtitleRef}
-            className="text-base md:text-xl font-normal max-w-[560px]"
-            style={{ color: 'var(--text-secondary)', lineHeight: 1.55 }}
+            className="text-sm md:text-lg font-normal max-w-[600px] mx-auto text-center"
+            style={{ color: 'var(--text-primary)', lineHeight: 1.65 }}
           >
-            <strong>Больше звонков по объекту начинается с качественной визуальной
-            подачи.</strong> Фото, видео и 3D-туры для коммерческой недвижимости,
-            которые помогают агентам, собственникам и бизнесу привлекать
-            больше заинтересованных клиентов.
+            <span className="text-primary font-semibold tracking-[-0.01em]" style={{ textWrap: 'pretty' }}>
+              Фото, видео и 3D-туры для коммерческой недвижимости. {" "}<br />
+            </span>
+             Помогаю агентам, собственникам и бизнесу привлекать<br /> больше заинтересованных клиентов.
           </p>
 
           <p
             ref={locationRef}
-            className="text-sm tracking-[0.12em] uppercase"
-            style={{ color: 'var(--text-tertiary)' }}
+            className="text-xs tracking-[0.12em] uppercase mt-4"
+            style={{ color: 'var(--text-secondary)' }}
           >
             Санкт-Петербург и Ленинградская область
           </p>

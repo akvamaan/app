@@ -10,7 +10,7 @@ export default function Footer() {
             className="text-lg font-medium tracking-[0.08em] mb-2"
             style={{ color: 'var(--text-primary)' }}
           >
-            KAKOYTO
+            КАКОЙ-ТО
           </h3>
           <p
             className="text-xs"

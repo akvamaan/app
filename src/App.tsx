@@ -10,6 +10,7 @@ import WhyPhotos from './sections/WhyPhotos'
 import About from './sections/About'
 import Process from './sections/Process'
 import Pricing from './sections/Pricing'
+import Testimonials from './sections/Testimonials'
 import FAQ from './sections/FAQ'
 import FinalCTA from './sections/FinalCTA'
 import Footer from './sections/Footer'
@@ -48,6 +49,7 @@ function App() {
       <About />
       <Process />
       <Pricing />
+      <Testimonials />
       <FAQ />
       <FinalCTA />
       <Footer />

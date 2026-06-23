@@ -7,8 +7,12 @@ export function photoPath(id: number): string {
   return `/photo/${id}.${ext}`
 }
 
-export const HERO_VIDEO = '/photo/gif1.mp4'
+export const HERO_VIDEO = '/photo/newvideo.webm'
+export const CTA_VIDEO = '/photo/gif1.mp4'
 export const ABOUT_VIDEO = '/photo/gif12.mp4'
 export const AVATAR = '/photo/gif100.jpg'
+export const TESTIMONIAL_PHOTO_1 = '/photo/human1.png'
+export const TESTIMONIAL_PHOTO_2 = '/photo/human2.png'
+export const TESTIMONIAL_PHOTO_3 = '/photo/human3.png'
 
 export const GALLERY_IDS = Array.from({ length: 14 }, (_, i) => i + 1)

@@ -80,7 +80,7 @@ export default function About() {
           >
             <img
               src={AVATAR}
-              alt="Фотограф KAKOYTO"
+              alt="Фотограф КАКОЙ-ТО"
               className="w-full h-full object-cover"
             />
           </div>
@@ -90,7 +90,7 @@ export default function About() {
             className="text-2xl md:text-3xl font-medium tracking-[0.06em] uppercase mb-5"
             style={{ color: 'var(--text-primary)' }}
           >
-            Обо мне
+            Кто такой «какой-то»?
           </h2>
 
           <div ref={textRef} className="flex flex-col gap-4">

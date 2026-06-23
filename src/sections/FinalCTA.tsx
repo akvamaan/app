@@ -3,7 +3,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { SectionBackground, SectionShell } from '@/components/SectionBackground'
 import TelegramButton from '@/components/TelegramButton'
-import { photoPath, TELEGRAM_URL } from '@/lib/media'
+import { CTA_VIDEO, TELEGRAM_URL } from '@/lib/media'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -42,8 +42,8 @@ export default function FinalCTA() {
     <SectionShell sectionRef={sectionRef} className="justify-center">
       <SectionBackground
         sectionRef={sectionRef}
-        src={photoPath(14)}
-        alt="Современный жилой комплекс"
+        type="video"
+        src={CTA_VIDEO}
         overlay="linear-gradient(to bottom, rgba(3,3,3,0.65) 0%, rgba(3,3,3,0.88) 100%)"
       />
 
