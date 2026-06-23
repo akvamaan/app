@@ -1,4 +1,4 @@
-export const TELEGRAM_URL = 'https://t.me/timur_everyday'
+export const TELEGRAM_URL = 'https://t.me/photo_kakoyto'
 
 const PNG_IDS = new Set([11, 12, 13, 14])
 
