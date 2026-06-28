@@ -15,7 +15,9 @@ import FAQ from './sections/FAQ'
 import FinalCTA from './sections/FinalCTA'
 import Footer from './sections/Footer'
 
-gsap.registerPlugin(ScrollTrigger)
+if (typeof window !== 'undefined' && gsap && ScrollTrigger) {
+  gsap.registerPlugin(ScrollTrigger)
+}
 
 function App() {
   const lenisRef = useRef<Lenis | null>(null)

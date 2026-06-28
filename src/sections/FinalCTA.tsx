@@ -1,11 +1,8 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { SectionBackground, SectionShell } from '@/components/SectionBackground'
 import TelegramButton from '@/components/TelegramButton'
 import { CTA_VIDEO, TELEGRAM_URL } from '@/lib/media'
-
-gsap.registerPlugin(ScrollTrigger)
 
 export default function FinalCTA() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -22,12 +19,12 @@ export default function FinalCTA() {
 
     gsap.fromTo(
       elements,
-      { y: 28, opacity: 0 },
+      { y: 20, opacity: 0 },
       {
         y: 0,
         opacity: 1,
-        duration: 0.65,
-        stagger: 0.12,
+        duration: 0.55,
+        stagger: 0.08,
         ease: 'power3.out',
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -47,26 +44,25 @@ export default function FinalCTA() {
         overlay="linear-gradient(to bottom, rgba(3,3,3,0.65) 0%, rgba(3,3,3,0.88) 100%)"
       />
 
-      <div className="section-content w-full px-6 md:px-12 flex flex-col items-center text-center max-w-xl mx-auto">
+      <div className="section-content w-full px-5 sm:px-6 md:px-10 flex flex-col items-center text-center max-w-xl mx-auto">
         <h2
           ref={titleRef}
-          className="text-3xl md:text-[42px] font-medium tracking-[-0.02em] mb-5"
-          style={{ color: 'var(--text-primary)', lineHeight: 1.2 }}
+          className="text-[clamp(1.75rem,4.5vw,2rem)] font-medium tracking-[-0.02em] mb-5"
+          style={{ color: 'var(--text-primary)', lineHeight: 1.25 }}
         >
           Остались вопросы?
         </h2>
 
         <p
           ref={subtitleRef}
-          className="text-base md:text-lg mb-10"
+          className="text-sm md:text-base mb-8 md:mb-9"
           style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}
         >
-          Напишите в Telegram — обсудим ваш объект и подберём оптимальный
-          формат съёмки.
+          Напишите в Telegram — обсудим ваш объект и подберём оптимальный формат съёмки.
         </p>
 
         <div ref={buttonRef}>
-          <TelegramButton href={TELEGRAM_URL} className="animate-pulse-glow">
+          <TelegramButton href={TELEGRAM_URL}>
             Получить консультацию в Telegram
           </TelegramButton>
         </div>

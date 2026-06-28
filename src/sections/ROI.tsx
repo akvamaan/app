@@ -1,10 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { SectionBackground, SectionShell } from '@/components/SectionBackground'
 import { photoPath } from '@/lib/media'
-
-gsap.registerPlugin(ScrollTrigger)
 
 const benefits = [
   'Больше просмотров объявления',
@@ -25,15 +22,16 @@ export default function ROI() {
     const list = listRef.current
     const discount = discountRef.current
 
+    const tl = gsap.timeline({})
     if (title) {
-      gsap.fromTo(
-        title.children,
-        { y: 30, opacity: 0 },
+      tl.fromTo(
+        Array.from(title.children),
+        { y: 20, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 0.6,
-          stagger: 0.1,
+          duration: 0.55,
+          stagger: 0.08,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: title,
@@ -45,32 +43,33 @@ export default function ROI() {
     }
 
     if (list) {
-      gsap.fromTo(
-        list.children,
-        { x: -24, opacity: 0 },
+      tl.fromTo(
+        Array.from(list.children),
+        { x: -20, opacity: 0 },
         {
           x: 0,
           opacity: 1,
           duration: 0.5,
-          stagger: 0.08,
+          stagger: 0.06,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: list,
             start: 'top 75%',
             toggleActions: 'play none none none',
           },
-        }
+        },
+        '-=0.3'
       )
     }
 
     if (discount) {
-      gsap.fromTo(
+      tl.fromTo(
         discount,
-        { y: 36, opacity: 0 },
+        { y: 28, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 0.8,
+          duration: 0.65,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: discount,
@@ -81,13 +80,18 @@ export default function ROI() {
             const obj = { value: 0 }
             gsap.to(obj, {
               value: 50,
-              duration: 1.2,
+              duration: 1,
               ease: 'power2.out',
               onUpdate: () => setDiscountNumber(Math.round(obj.value)),
             })
           },
-        }
+        },
+        '-=0.3'
       )
+    }
+
+    return () => {
+      tl.kill()
     }
   }, [])
 
@@ -100,22 +104,22 @@ export default function ROI() {
         overlay="rgba(3,3,3,0.88)"
       />
 
-      <div className="section-content w-full px-6 md:px-12 max-w-3xl mx-auto">
+      <div className="section-content w-full px-5 sm:px-6 md:px-10 max-w-3xl mx-auto">
         <div ref={titleRef} className="mb-8 md:mb-10">
           <h2
-            className="text-3xl md:text-[42px] font-medium tracking-[-0.02em]"
+            className="text-[clamp(1.75rem,4.5vw,2.25rem)] font-medium tracking-[-0.02em]"
             style={{ color: 'var(--text-primary)', lineHeight: 1.2 }}
           >
             Почему профессиональная съёмка окупается
           </h2>
         </div>
 
-        <ul ref={listRef} className="flex flex-col gap-3 mb-8">
+        <ul ref={listRef} className="flex flex-col gap-2.5 mb-7 md:mb-8">
           {benefits.map((text) => (
             <li
               key={text}
-              className="glass-card flex items-start gap-4 p-4 md:p-5"
-              style={{ borderRadius: 16 }}
+              className="glass-card flex items-start gap-3 p-4 md:p-4.5"
+              style={{ borderRadius: 14 }}
             >
               <span
                 className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"
@@ -123,7 +127,7 @@ export default function ROI() {
               />
               <span
                 className="text-sm md:text-base"
-                style={{ color: 'var(--text-primary)', lineHeight: 1.55 }}
+                style={{ color: 'var(--text-primary)', lineHeight: 1.5 }}
               >
                 {text}
               </span>
@@ -133,8 +137,8 @@ export default function ROI() {
 
         <div
           ref={discountRef}
-          className="glass-card glass-accent p-8 md:p-10"
-          style={{ borderRadius: 24 }}
+          className="glass-card glass-accent p-6 md:p-8"
+          style={{ borderRadius: 20 }}
         >
           <p
             className="text-xs font-semibold tracking-[0.14em] uppercase mb-3"
@@ -144,11 +148,10 @@ export default function ROI() {
           </p>
           <div className="flex items-baseline gap-2 mb-4">
             <span
-              className="text-6xl md:text-8xl font-extralight tracking-[-0.04em]"
+              className="text-5xl md:text-7xl font-extralight tracking-[-0.04em]"
               style={{
                 color: 'var(--accent-gold)',
                 lineHeight: 1,
-                textShadow: '0 0 60px rgba(212,168,83,0.2)',
               }}
             >
               −{discountNumber}%

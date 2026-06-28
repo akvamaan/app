@@ -1,16 +1,13 @@
 export const TELEGRAM_URL = 'https://t.me/photo_kakoyto'
 
-const PNG_IDS = new Set([11, 12, 13, 14])
-
 export function photoPath(id: number): string {
-  const ext = PNG_IDS.has(id) ? 'png' : 'jpg'
-  return `/photo/${id}.${ext}`
+  return `/photo/${id}.webp`
 }
 
 export const HERO_VIDEO = '/photo/newvideo.webm'
-export const CTA_VIDEO = '/photo/gif1.mp4'
-export const ABOUT_VIDEO = '/photo/gif12.mp4'
-export const AVATAR = '/photo/gif100.jpg'
+export const CTA_VIDEO = '/photo/gif1.webm'
+export const ABOUT_VIDEO = '/photo/gif12.webp'
+export const AVATAR = '/photo/gif100.webp'
 export const TESTIMONIAL_PHOTO_1 = '/photo/human1.png'
 export const TESTIMONIAL_PHOTO_2 = '/photo/human2.png'
 export const TESTIMONIAL_PHOTO_3 = '/photo/human3.png'

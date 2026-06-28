@@ -1,11 +1,8 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { SectionBackground, SectionShell } from '@/components/SectionBackground'
 import TelegramButton from '@/components/TelegramButton'
 import { HERO_VIDEO, TELEGRAM_URL } from '@/lib/media'
-
-gsap.registerPlugin(ScrollTrigger)
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -18,29 +15,29 @@ export default function Hero() {
     const card = cardRef.current
     if (!card) return
 
-    const tl = gsap.timeline({ delay: 0.3 })
+    const tl = gsap.timeline({ delay: 0.1 })
     tl.fromTo(
       card,
       { scale: 0.92, opacity: 0 },
-      { scale: 1, opacity: 1, duration: 1.1, ease: 'power3.out' }
+      { scale: 1, opacity: 1, duration: 0.8, ease: 'power3.out' }
     )
       .fromTo(
         titleRef.current,
-        { y: 24, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out' },
-        '-=0.7'
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' },
+        '-=0.5'
       )
       .fromTo(
         subtitleRef.current,
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' },
-        '-=0.45'
+        { y: 16, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.5, ease: 'power3.out' },
+        '-=0.3'
       )
       .fromTo(
         locationRef.current,
-        { y: 16, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.5, ease: 'power3.out' },
-        '-=0.35'
+        { y: 12, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.4, ease: 'power3.out' },
+        '-=0.2'
       )
 
     return () => {
@@ -58,37 +55,36 @@ export default function Hero() {
         parallax={-8}
       />
 
-      <div className="section-content w-full px-6 md:px-12 flex flex-col items-start text-left">
+      <div className="section-content w-full px-5 sm:px-6 md:px-10 flex flex-col items-center text-center">
         <div
           ref={cardRef}
-          className="glass-card glass-thick w-full max-w-[720px] px-6 py-8 md:px-8 md:py-10 flex flex-col items-center justify-center gap-4"
-          style={{ borderRadius: 28 }}
+          className="glass-card glass-thick w-full max-w-[720px] px-5 py-7 sm:px-6 sm:py-8 md:px-8 md:py-9 flex flex-col items-center justify-center gap-3"
+          style={{ borderRadius: 24 }}
         >
           <h1
-  ref={titleRef}
-  className="text-3xl md:text-4xl font-medium tracking-[-0.02em] mb-6 max-w-[640px] text-center"
-  style={{ color: 'var(--text-primary)', lineHeight: 1.2, textWrap: 'balance' }}
->
-  «Качественная визуальная подача — первый шаг к большему количеству обращений по объекту» — 
-  <span style={{ color: '#bc9549' }}>
-    {" "}какой-то фотограф
-  </span>
-</h1>
+            ref={titleRef}
+            className="text-[clamp(1.5rem,4.5vw,2.125rem)] font-medium tracking-[-0.02em] mb-5 max-w-[600px]"
+            style={{ color: 'var(--text-primary)', lineHeight: 1.3, textWrap: 'balance' }}
+          >
+            «Качественная визуальная подача — первый шаг к большему количеству обращений по объекту» — {' '}
+            <span style={{ color: '#bc9549' }}>
+              какой-то фотограф
+            </span>
+          </h1>
 
           <p
             ref={subtitleRef}
-            className="text-sm md:text-lg font-normal max-w-[600px] mx-auto text-center"
-            style={{ color: 'var(--text-primary)', lineHeight: 1.65 }}
+            className="text-sm font-normal max-w-[560px] mx-auto"
+            style={{ color: 'var(--text-primary)', lineHeight: 1.6 }}
           >
             <span className="text-primary font-semibold tracking-[-0.01em]" style={{ textWrap: 'pretty' }}>
-              Фото, видео и 3D-туры для коммерческой недвижимости. {" "}<br />
+              Фото, видео и 3D-туры для коммерческой недвижимости. Помогаю агентам, собственникам и бизнесу привлекать больше заинтересованных клиентов.
             </span>
-             Помогаю агентам, собственникам и бизнесу привлекать<br /> больше заинтересованных клиентов.
           </p>
 
           <p
             ref={locationRef}
-            className="text-xs tracking-[0.12em] uppercase mt-4"
+            className="text-xs tracking-[0.12em] uppercase mt-3"
             style={{ color: 'var(--text-secondary)' }}
           >
             Санкт-Петербург и Ленинградская область

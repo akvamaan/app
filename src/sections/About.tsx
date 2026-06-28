@@ -1,10 +1,7 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { SectionBackground, SectionShell } from '@/components/SectionBackground'
 import { ABOUT_VIDEO, AVATAR } from '@/lib/media'
-
-gsap.registerPlugin(ScrollTrigger)
 
 export default function About() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -17,14 +14,15 @@ export default function About() {
     const card = cardRef.current
     if (!card) return
 
-    gsap.fromTo(
+    const tl = gsap.timeline({})
+    tl.fromTo(
       card,
-      { y: 40, opacity: 0, scale: 0.97 },
+      { y: 30, opacity: 0, scale: 0.97 },
       {
         y: 0,
         opacity: 1,
         scale: 1,
-        duration: 0.85,
+        duration: 0.7,
         ease: 'power3.out',
         scrollTrigger: {
           trigger: card,
@@ -35,23 +33,27 @@ export default function About() {
     )
 
     const inner = [avatarRef.current, titleRef.current, ...(textRef.current?.children ?? [])]
-    gsap.fromTo(
+    tl.fromTo(
       inner.filter(Boolean),
-      { y: 20, opacity: 0 },
+      { y: 16, opacity: 0 },
       {
         y: 0,
         opacity: 1,
-        duration: 0.55,
-        stagger: 0.1,
+        duration: 0.5,
+        stagger: 0.08,
         ease: 'power3.out',
-        delay: 0.15,
         scrollTrigger: {
           trigger: card,
           start: 'top 75%',
           toggleActions: 'play none none none',
         },
-      }
+      },
+      '-=0.4'
     )
+
+    return () => {
+      tl.kill()
+    }
   }, [])
 
   return (
@@ -67,27 +69,29 @@ export default function About() {
       <div className="section-content w-full px-6 md:px-12 flex justify-center">
         <div
           ref={cardRef}
-          className="glass-card glass-thick w-full max-w-[560px] p-8 md:p-10 flex flex-col items-center text-center"
+          className="glass-card glass-thick w-full max-w-[560px] p-7 md:p-9 flex flex-col items-center text-center"
           style={{ borderRadius: 28 }}
         >
           <div
             ref={avatarRef}
-            className="relative mb-6 w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden"
+            className="relative mb-6 w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden"
             style={{
               border: '2px solid rgba(255,255,255,0.12)',
-              boxShadow: '0 0 40px rgba(212,168,83,0.12)',
+              boxShadow: '0 0 32px rgba(212,168,83,0.1)',
             }}
           >
             <img
               src={AVATAR}
               alt="Фотограф КАКОЙ-ТО"
               className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
             />
           </div>
 
           <h2
             ref={titleRef}
-            className="text-2xl md:text-3xl font-medium tracking-[0.06em] uppercase mb-5"
+            className="text-[clamp(1.5rem,4vw,2rem)] font-medium tracking-[0.06em] uppercase mb-5"
             style={{ color: 'var(--text-primary)' }}
           >
             Кто такой «какой-то»?

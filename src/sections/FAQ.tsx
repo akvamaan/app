@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import {
   Accordion,
   AccordionContent,
@@ -9,8 +8,6 @@ import {
 } from '@/components/ui/accordion'
 import { SectionBackground, SectionShell } from '@/components/SectionBackground'
 import { photoPath } from '@/lib/media'
-
-gsap.registerPlugin(ScrollTrigger)
 
 const faqItems = [
   {
@@ -49,15 +46,16 @@ export default function FAQ() {
     const title = titleRef.current
     const accordion = accordionRef.current
 
+    const tl = gsap.timeline({})
     if (title) {
-      gsap.fromTo(
-        title.children,
-        { y: 30, opacity: 0 },
+      tl.fromTo(
+        Array.from(title.children),
+        { y: 20, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 0.6,
-          stagger: 0.1,
+          duration: 0.55,
+          stagger: 0.08,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: title,
@@ -69,21 +67,26 @@ export default function FAQ() {
     }
 
     if (accordion) {
-      gsap.fromTo(
+      tl.fromTo(
         accordion,
-        { y: 30, opacity: 0 },
+        { y: 24, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 0.7,
+          duration: 0.6,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: accordion,
             start: 'top 78%',
             toggleActions: 'play none none none',
           },
-        }
+        },
+        '-=0.3'
       )
+    }
+
+    return () => {
+      tl.kill()
     }
   }, [])
 
@@ -96,10 +99,10 @@ export default function FAQ() {
         overlay="rgba(3,3,3,0.88)"
       />
 
-      <div className="section-content w-full px-6 md:px-12 max-w-2xl mx-auto">
-        <div ref={titleRef} className="mb-8 md:mb-10 text-center">
+      <div className="section-content w-full px-5 sm:px-6 md:px-10 max-w-2xl mx-auto">
+        <div ref={titleRef} className="mb-7 md:mb-9 text-center">
           <h2
-            className="text-2xl md:text-4xl font-medium tracking-[0.04em] uppercase"
+            className="text-[clamp(1.5rem,4vw,1.75rem)] font-medium tracking-[0.04em] uppercase"
             style={{ color: 'var(--text-primary)' }}
           >
             Частые вопросы
@@ -108,8 +111,8 @@ export default function FAQ() {
 
         <div
           ref={accordionRef}
-          className="glass-card glass-thick px-6 md:px-8"
-          style={{ borderRadius: 24 }}
+          className="glass-card glass-thick px-5 md:px-6"
+          style={{ borderRadius: 20 }}
         >
           <Accordion type="single" collapsible className="w-full">
             {faqItems.map((item, index) => (
@@ -119,14 +122,14 @@ export default function FAQ() {
                 className="border-white/[0.06]"
               >
                 <AccordionTrigger
-                  className="text-base md:text-lg font-medium hover:no-underline py-5"
+                  className="text-base font-medium hover:no-underline py-4"
                   style={{ color: 'var(--text-primary)' }}
                 >
                   {item.question}
                 </AccordionTrigger>
                 <AccordionContent
-                  className="text-sm md:text-base pb-5"
-                  style={{ color: 'var(--text-secondary)', lineHeight: 1.65 }}
+                  className="text-sm pb-4"
+                  style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}
                 >
                   {item.answer}
                 </AccordionContent>

@@ -22,7 +22,7 @@ interface TestimonialCardProps {
 const TestimonialCard = memo(({ testimonial, isActive }: TestimonialCardProps) => (
   <article
     className={cn(
-      'glass-card glass-thick group relative min-h-[420px] p-6 md:p-8 transition-all duration-500 ease-out md:group-hover:-translate-y-1 md:group-hover:border-white/15',
+      'glass-card glass-thick group relative min-h-[380px] p-6 md:p-8 transition-all duration-500 ease-out',
       isActive
         ? 'translate-y-0 opacity-100'
         : 'translate-y-3 opacity-80'
@@ -31,18 +31,18 @@ const TestimonialCard = memo(({ testimonial, isActive }: TestimonialCardProps) =
   >
     <span
       aria-hidden="true"
-      className="pointer-events-none absolute right-6 top-5 select-none text-[112px] leading-none font-serif text-accent-gold/10"
+      className="pointer-events-none absolute right-6 top-5 select-none text-[80px] leading-none font-serif text-accent-gold/10"
     >
-      “
+      "
     </span>
 
-    <div className="relative z-10 flex h-full flex-col gap-6">
+    <div className="relative z-10 flex h-full flex-col gap-5">
       <div className="flex items-center gap-4">
         <div
-          className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full md:h-20 md:w-20"
+          className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full md:h-16 md:w-16"
           style={{
             border: '1px solid rgba(255,255,255,0.14)',
-            boxShadow: '0 0 34px rgba(212,168,83,0.14)',
+            boxShadow: '0 0 24px rgba(212,168,83,0.1)',
           }}
         >
           <img
@@ -50,12 +50,13 @@ const TestimonialCard = memo(({ testimonial, isActive }: TestimonialCardProps) =
             alt={`Фото клиента ${testimonial.name}`}
             className="h-full w-full object-cover"
             loading="lazy"
+            decoding="async"
           />
         </div>
 
         <div>
           <h3
-            className="text-lg font-medium md:text-xl"
+            className="text-lg font-medium"
             style={{ color: 'var(--text-primary)' }}
           >
             {testimonial.name}
@@ -73,8 +74,8 @@ const TestimonialCard = memo(({ testimonial, isActive }: TestimonialCardProps) =
         {testimonial.text.split('\n\n').map((paragraph) => (
           <p
             key={paragraph}
-            className="text-base leading-relaxed md:text-lg"
-            style={{ color: 'var(--text-primary)', lineHeight: 1.65 }}
+            className="text-base leading-relaxed"
+            style={{ color: 'var(--text-primary)', lineHeight: 1.6 }}
           >
             {paragraph}
           </p>
@@ -162,7 +163,7 @@ export default function TestimonialsCarousel() {
     <div className="relative">
       <button
         type="button"
-        className="absolute left-0 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/45 text-white/90 backdrop-blur-xl transition-all duration-300 hover:border-accent-gold/50 hover:bg-accent-gold/15 hover:text-accent-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold/50 disabled:pointer-events-none disabled:opacity-40 md:flex"
+        className="absolute left-0 top-1/2 z-10 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/45 text-white/90 backdrop-blur-xl transition-all duration-300 hover:border-accent-gold/50 hover:bg-accent-gold/15 hover:text-accent-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold/50 disabled:pointer-events-none disabled:opacity-40 md:flex"
         onClick={scrollPrev}
         aria-label="Предыдущий отзыв"
       >
@@ -199,7 +200,7 @@ export default function TestimonialsCarousel() {
 
       <button
         type="button"
-        className="absolute right-0 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/45 text-white/90 backdrop-blur-xl transition-all duration-300 hover:border-accent-gold/50 hover:bg-accent-gold/15 hover:text-accent-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold/50 disabled:pointer-events-none disabled:opacity-40 md:flex"
+        className="absolute right-0 top-1/2 z-10 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/45 text-white/90 backdrop-blur-xl transition-all duration-300 hover:border-accent-gold/50 hover:bg-accent-gold/15 hover:text-accent-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold/50 disabled:pointer-events-none disabled:opacity-40 md:flex"
         onClick={scrollNext}
         aria-label="Следующий отзыв"
       >

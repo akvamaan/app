@@ -41,7 +41,7 @@ export function SectionBackground({
           className={mediaClass}
           aria-hidden="true"
         >
-          <source src={src} type="video/mp4" />
+          <source src={src} type={src.endsWith('.webm') ? 'video/webm' : 'video/mp4'} />
         </video>
       ) : (
         <img
@@ -50,6 +50,7 @@ export function SectionBackground({
           alt={alt}
           className={mediaClass}
           loading="lazy"
+          decoding="async"
         />
       )}
       <div className="section-overlay" style={{ background: overlay }} />

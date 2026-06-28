@@ -1,12 +1,9 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 import TestimonialsCarousel from '@/components/TestimonialsCarousel'
 import { SectionBackground, SectionShell } from '@/components/SectionBackground'
 import { photoPath } from '@/lib/media'
-
-gsap.registerPlugin(ScrollTrigger)
 
 export default function Testimonials() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -17,15 +14,16 @@ export default function Testimonials() {
     const title = titleRef.current
     const carousel = carouselRef.current
 
+    const tl = gsap.timeline({})
     if (title) {
-      gsap.fromTo(
-        title.children,
-        { y: 30, opacity: 0 },
+      tl.fromTo(
+        Array.from(title.children),
+        { y: 20, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 0.65,
-          stagger: 0.1,
+          duration: 0.55,
+          stagger: 0.08,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: title,
@@ -37,21 +35,26 @@ export default function Testimonials() {
     }
 
     if (carousel) {
-      gsap.fromTo(
+      tl.fromTo(
         carousel,
-        { y: 34, opacity: 0 },
+        { y: 24, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 0.75,
+          duration: 0.6,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: carousel,
             start: 'top 78%',
             toggleActions: 'play none none none',
           },
-        }
+        },
+        '-=0.25'
       )
+    }
+
+    return () => {
+      tl.kill()
     }
   }, [])
 
@@ -64,17 +67,17 @@ export default function Testimonials() {
         overlay="rgba(3,3,3,0.88)"
       />
 
-      <div className="section-content w-full px-6 md:px-12 max-w-6xl mx-auto">
-        <div ref={titleRef} className="mb-10 md:mb-14 max-w-3xl">
+      <div className="section-content w-full px-5 sm:px-6 md:px-10 max-w-6xl mx-auto">
+        <div ref={titleRef} className="mb-8 md:mb-12 max-w-3xl">
           <span
-            className="mb-4 block text-xs font-semibold tracking-[0.14em] uppercase"
+            className="mb-3 block text-xs font-semibold tracking-[0.14em] uppercase"
             style={{ color: 'var(--accent-gold)' }}
           >
             Отзывы клиентов
           </span>
           <h2
-            className="text-3xl font-light tracking-[-0.02em] md:text-[42px]"
-            style={{ color: 'var(--text-primary)', lineHeight: 1.15 }}
+            className="text-[clamp(1.75rem,4.5vw,2.25rem)] font-light tracking-[-0.02em]"
+            style={{ color: 'var(--text-primary)', lineHeight: 1.2 }}
           >
             Что говорят клиенты после съёмки
           </h2>
